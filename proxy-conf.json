@@ -1,0 +1,12 @@
+{
+  "/koperasi-service/api": {
+      "target": "http://localhost:7500",
+      "secure" : false
+  },
+
+  "/koperasi-admin/admin": {
+      "target": "http://localhost:7600",
+      "secure" : false
+  }
+
+}

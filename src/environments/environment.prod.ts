@@ -1,3 +1,6 @@
+
 export const environment = {
-  production: true
+  production: false,
+  urlApi : "/koperasi-service/api",
+  urlAdmin : "/koperasi-admin/admin"
 };

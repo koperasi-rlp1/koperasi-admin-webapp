@@ -1,0 +1,26 @@
+<div class="form-bg" style="display: flex !important; justify-content: center !important; height: 100vh !important; padding-top: 10%;">
+  <div class="container mx-5">
+      <div class="" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;">
+          <div class="">
+              <div class="form-container">
+                  <h3 class="title">Admin Koperasi App</h3>
+                  <form class="form-horizontal" [formGroup]="form">
+                      <div class="form-icon">
+                          <i class="fa fa-user-circle"></i>
+                      </div>
+                      <div class="form-group">
+                          <span class="input-icon"><i class="fa fa-user"></i></span>
+                          <input type="email" formControlName="username" class="form-control" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                          <span class="input-icon"><i class="fa fa-lock"></i></span>
+                          <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                      </div>
+                      <button class="btn signin" (click)="login()" id="loader-text">Login</button>
+                      <span style="display: none;" id="login-loader"><i class="fa fa-spinner spin" aria-hidden="true"></i></span>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
