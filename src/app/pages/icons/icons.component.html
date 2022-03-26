@@ -41,22 +41,33 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">Konfirmasi Pembayaran</h4>
+        <h4 class="card-title">Konfirmasi Pembayaran Simpanan</h4>
       </div>
       <div class="card-body">
+        <form [formGroup]="formFilter">
+          <div class="mb-4">
+            <div class="row p-t-20" style="padding-left: 1%;">
+              <div class="outer" style="margin-right: 2%;">
+                  <select name="bulan" id="bulanAnggaran" class="form-control"
+                          formControlName="jenisTransaksi">
+                          <option value="SIMPANAN WAJIB" selected>Simpanan Wajib</option>
+                          <option value="SIMPANAN SUKA RELA">Simpanan Suka Rela</option>
+                  </select>
+              </div>
+              <div class="outer" style="margin-right: 2%;">
+                <input class="form-control" type="text" placeholder="NIP"
+                       formControlName="nip">
+              </div>
+            </div>
+              <button class="btn btn-success" (click)="refresh()">Search</button>
+          </div>
+        </form>
         <div class="table-responsive">
-          <table class="table">
-            <thead class="text-success">
-              <th>Nama</th>
-              <th>NIP</th>
-              <th>Total Pinjaman</th>
-              <th>Jumlah Pembayaran</th>
-              <th>Sisa Pembayaran</th>
-              <th class="text-right"></th>
-            </thead>
+          <table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
           </table>
         </div>
       </div>
     </div>
   </div>
 </div>
+

@@ -1,3 +1,5 @@
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
@@ -13,12 +15,29 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { DataTablesModule } from 'angular-datatables';
+import { UserComponent } from './pages/user/user.component';
+import { TableComponent } from './pages/table/table.component';
+import { UpgradeComponent } from './pages/upgrade/upgrade.component';
+import { TypographyComponent } from './pages/typography/typography.component';
+import { IconsComponent } from './pages/icons/icons.component';
+import { MapsComponent } from './pages/maps/maps.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    DashboardComponent,
+    UserComponent,
+    TableComponent,
+    UpgradeComponent,
+    TypographyComponent,
+    IconsComponent,
+    MapsComponent,
+    NotificationsComponent
+
   ],
   imports: [
     BrowserAnimationsModule,
@@ -30,7 +49,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     ToastrModule.forRoot(),
     FooterModule,
     FixedPluginModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
