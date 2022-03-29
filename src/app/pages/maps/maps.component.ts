@@ -94,7 +94,7 @@ export class MapsComponent implements OnInit {
             window.location.reload();
           }, error => {
             if(error.status == 200){
-              this._toastr.success(error.body);
+              this._toastr.success(error.error.text);
               this.getDismissReason('Cross click');
               window.location.reload();
             }

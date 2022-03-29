@@ -23,6 +23,10 @@ import { TypographyComponent } from './pages/typography/typography.component';
 import { IconsComponent } from './pages/icons/icons.component';
 import { MapsComponent } from './pages/maps/maps.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { SetoranComponent } from './pages/setoran/setoran.component';
+import { DataNasabahComponent } from './pages/data-nasabah/data-nasabah.component';
+import { DataKoperasiComponent } from './pages/data-koperasi/data-koperasi.component';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 
 @NgModule({
@@ -36,7 +40,10 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
     TypographyComponent,
     IconsComponent,
     MapsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    SetoranComponent,
+    DataNasabahComponent,
+    DataKoperasiComponent
 
   ],
   imports: [
@@ -52,7 +59,8 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
     HttpClientModule,
     DataTablesModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxCurrencyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

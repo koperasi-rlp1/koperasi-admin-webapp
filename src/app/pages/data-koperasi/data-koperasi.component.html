@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Data Koperasi</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="exampleInputPassword1">Jumlah Transaksi Simpanan</label>
+            <div class="input-group input-group-sm">
+              <input class="mb-3 form-control form-control-lg padd" type="text"  [value]="dataKoperasi.trSimpanan" readonly>
+            </div>
+            <label for="exampleInputPassword1">Jumlah Transaksi Pinjaman</label>
+            <div class="input-group input-group-sm">
+              <input class="mb-3 form-control form-control-lg padd" type="text" [value]="dataKoperasi.trPinjaman" readonly>
+            </div>
+            <label for="exampleInputPassword1">Jumlah Nasabah</label>
+            <div class="input-group input-group-sm">
+              <input class="mb-3 form-control form-control-lg padd" type="text" [value]="dataKoperasi.jumlahNasabah" readonly>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="exampleInputPassword1">Total Simpanan</label>
+            <div class="input-group input-group-sm">
+              <input class="mb-3 form-control form-control-lg padd" type="text" [value]="dataKoperasi.jumlahSimpanan" currencyMask
+              [options]="{ prefix: 'Rp ', thousands: '.', decimal: ',' }" readonly>
+            </div>
+            <label for="exampleInputPassword1">Total Pinjaman</label>
+            <div class="input-group input-group-sm">
+              <input class="mb-3 form-control form-control-lg padd" type="text" [value]="dataKoperasi.jumlahPinjaman" currencyMask
+              [options]="{ prefix: 'Rp ', thousands: '.', decimal: ',' }" readonly>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,8 +11,10 @@ export const ROUTES: RouteInfo[] = [
   { path: "/dashboard", title: "Dashboard", icon: "", class: "" },
   { path: "/icons", title: "Konfirmasi Pembayaran", icon: "", class: "" },
   { path: "/maps", title: "Konfirmasi Keanggotaan", icon: "", class: "" },
-  { path: "/notifications", title: "Konfirmasi Pinjaman", icon: "", class: "" },
-  { path: "/user", title: "Laporan", icon: "", class: "" },
+  { path: "/konfirmasi-pinjaman", title: "Konfirmasi Pinjaman", icon: "", class: "" },
+  { path: "/pinjaman-pembayaran", title: "Pinjaman Pembayaran", icon: "", class: "" },
+  { path: "/data-nasabah", title: "Data Nasabah", icon: "", class: "" },
+  { path: "/data-koperasi", title: "Data Koperasi", icon: "", class: "" },
 ];
 
 @Component({

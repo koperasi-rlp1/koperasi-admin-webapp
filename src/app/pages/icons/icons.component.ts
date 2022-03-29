@@ -101,15 +101,15 @@ const Swal = require('sweetalert2');
 export class NgbdModalContent {
   @Input() dataTransaksi;
 
-  approve(dataTransaksi : any, statusApproval : any){
+  approve(dataTransaksi: any, statusApproval: any) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
       },
       buttonsStyling: false,
-  });
-  swalWithBootstrapButtons.fire({
+    });
+    swalWithBootstrapButtons.fire({
       title: 'Konfirmasi Simpanan',
       text: 'Anda Yakin ? Menyetujui Transaksi Berupa ' + this.dataTransaksi.jenisTransaksi + ' dari Nasabah Dengan Nama ' + this.dataTransaksi.namaNasabah,
       type: 'error',
@@ -118,7 +118,7 @@ export class NgbdModalContent {
       confirmButtonText: 'Ya',
       cancelButtonText: 'Tidak',
       reverseButtons: true
-  }).then((result) => {
+    }).then((result) => {
       if (result.value) {
         let transaksi = new Transaksi();
         transaksi.idApproval = dataTransaksi.idApproval;
@@ -139,15 +139,15 @@ export class NgbdModalContent {
     });
   }
 
-  reject(dataTransaksi : any, statusApproval : any){
+  reject(dataTransaksi: any, statusApproval: any) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
       },
       buttonsStyling: false,
-  });
-  swalWithBootstrapButtons.fire({
+    });
+    swalWithBootstrapButtons.fire({
       title: 'Konfirmasi Simpanan',
       text: 'Anda Yakin ? Membatalkan Transaksi Berupa ' + this.dataTransaksi.jenisTransaksi + ' dari Nasabah Dengan Nama ' + this.dataTransaksi.namaNasabah,
       type: 'error',
@@ -156,7 +156,7 @@ export class NgbdModalContent {
       confirmButtonText: 'Ya',
       cancelButtonText: 'Tidak',
       reverseButtons: true
-  }).then((result) => {
+    }).then((result) => {
       if (result.value) {
         let transaksi = new Transaksi();
         transaksi.idApproval = dataTransaksi.idApproval;
@@ -177,7 +177,7 @@ export class NgbdModalContent {
     });
   }
 
-  constructor(public activeModal: NgbActiveModal, public service : SimpananService, public toastr : ToastrService) {}
+  constructor(public activeModal: NgbActiveModal, public service: SimpananService, public toastr: ToastrService) { }
 }
 
 @Component({
@@ -185,30 +185,30 @@ export class NgbdModalContent {
   moduleId: module.id,
   templateUrl: "icons.component.html",
 })
-export class IconsComponent implements OnInit, AfterViewInit{
+export class IconsComponent implements OnInit, AfterViewInit {
   closeResult = '';
 
   @ViewChild(DataTableDirective)
-  dtElement : DataTableDirective;
-  dtOptions : any;
-  dtTrigger : Subject<any> = new Subject();
+  dtElement: DataTableDirective;
+  dtOptions: any;
+  dtTrigger: Subject<any> = new Subject();
 
-  formFilter : FormGroup;
+  formFilter: FormGroup;
 
   constructor(
-    private service : SimpananService,
-    private _formBuilder : FormBuilder,
+    private service: SimpananService,
+    private _formBuilder: FormBuilder,
     private modalService: NgbModal,
-    private toastr : ToastrService
+    private toastr: ToastrService
   ) {
   }
 
   ngOnInit() {
 
     this.formFilter = this._formBuilder.group({
-        jenisTransaksi: this._formBuilder.control(null),
-        bulanTransaksi: this._formBuilder.control(null),
-        nip: this._formBuilder.control(null),
+      jenisTransaksi: this._formBuilder.control(null),
+      bulanTransaksi: this._formBuilder.control(null),
+      nip: this._formBuilder.control(null),
     });
 
     this.formFilter.patchValue({
@@ -219,7 +219,7 @@ export class IconsComponent implements OnInit, AfterViewInit{
 
   }
 
-  getData(){
+  getData() {
     this.dtOptions = {
       lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'All']],
       pagingType: 'full_numbers',
@@ -229,97 +229,97 @@ export class IconsComponent implements OnInit, AfterViewInit{
       autoWidth: false,
       dom: 't<\'row\'<\'col-sm-12\'ip><\'col-sm-12\'l>>',
       order: [1, 'desc'],
-      ajax : (dataTablesParameters: DatatablesRequest, callback) => {
+      ajax: (dataTablesParameters: DatatablesRequest, callback) => {
         let dataParam = new TransaksiApproval();
         const value = JSON.parse(localStorage.getItem("currentLogin"));
         dataParam.jenisTransaksi = this.formFilter.get("jenisTransaksi").value;
         dataTablesParameters.extraParam = dataParam;
-        this.service.datatables(dataTablesParameters).subscribe( resp => {
+        this.service.datatables(dataTablesParameters).subscribe(resp => {
           callback({
-            recordsTotal : resp.recordTotal,
-            recordsFiltered : resp.recordFiltered,
-            data : resp.data,
-            draw : resp.draw
+            recordsTotal: resp.recordTotal,
+            recordsFiltered: resp.recordFiltered,
+            data: resp.data,
+            draw: resp.draw
           });
         });
       },
       columns: [{
-        width : '5%',
-        title : 'No',
-        data : 'no',
-        orderable : false,
+        width: '5%',
+        title: 'No',
+        data: 'no',
+        orderable: false,
         className: 'text-center align-middle nopadding'
       },
-    {
-      width : '20%',
-      title: 'Jenis Transaksi',
-      data : 'jenisTransaksi',
-      orderable : false,
-      className: 'text-center align-middle nopadding'
-    },
-    {
-      width : '5%',
-      title : 'NIP',
-      data : 'nip',
-      orderable : false,
-      className: 'text-center align-middle nopadding'
-    },
-    {
-      width : '20%',
-      title : 'Nama Nasabah',
-      data : 'namaNasabah',
-      orderable : false,
-      className: 'text-center align-middle nopadding'
-    },
-    {
-      width : '10%',
-      title : 'Tanggal',
-      data : 'tanggal',
-      orderable : false,
-      className: 'text-center align-middle nopadding'
-    },
-    {
-      width : '25%',
-      title : 'Keterangan',
-      data : 'deskripsi',
-      orderable : false,
-      className: 'text-center align-middle nopadding'
-    },
-    {
-      width : '25%',
-      title : 'Nominal Transaksi',
-      data : 'nominalTransaksi',
-      orderable : false,
-      className: 'text-center align-middle nopadding',
-      render: $.fn.dataTable.render.number('.', ',', 2, 'Rp ')
-    }
-    ,
-    {
-      width : '10%',
-      title : 'Detail',
-      data : 'idApproval',
-      orderable: false,
-      render(data, type, row){
-        return `<button type="button" class="btn btn-primary btn-default" id="btnEdit"><i class="nc-icon nc-zoom-split"></i></button>`;
+      {
+        width: '20%',
+        title: 'Jenis Transaksi',
+        data: 'jenisTransaksi',
+        orderable: false,
+        className: 'text-center align-middle nopadding'
       },
-    }
-    // {
-    //   title : 'delete',
-    //   data : 'id',
-    //   orderable: false,
-    //   render(data, type, row){
-    //     return `<button type="button" class="btn btn-dark btn-default delete" data-element-id="${row.id}">
-    //     Delete</button>`;
-    //   },
-    // }
-    ],
-    rowCallback: (row: Node, data: any, index: number) => {
-      $('#btnEdit', row).click(() => {
-        // this.router.navigate(['/admin-page/arsip/edit/'+data.id]);
-        this.open(data.idApproval);
-      });
-    }
-  };
+      {
+        width: '5%',
+        title: 'NIP',
+        data: 'nip',
+        orderable: false,
+        className: 'text-center align-middle nopadding'
+      },
+      {
+        width: '20%',
+        title: 'Nama Nasabah',
+        data: 'namaNasabah',
+        orderable: false,
+        className: 'text-center align-middle nopadding'
+      },
+      {
+        width: '10%',
+        title: 'Tanggal',
+        data: 'tanggal',
+        orderable: false,
+        className: 'text-center align-middle nopadding'
+      },
+      {
+        width: '25%',
+        title: 'Keterangan',
+        data: 'deskripsi',
+        orderable: false,
+        className: 'text-center align-middle nopadding'
+      },
+      {
+        width: '25%',
+        title: 'Nominal Transaksi',
+        data: 'nominalTransaksi',
+        orderable: false,
+        className: 'text-center align-middle nopadding',
+        render: $.fn.dataTable.render.number('.', ',', 2, 'Rp ')
+      }
+        ,
+      {
+        width: '10%',
+        title: 'Detail',
+        data: 'idApproval',
+        orderable: false,
+        render(data, type, row) {
+          return `<button type="button" class="btn btn-primary btn-default" id="btnEdit"><i class="nc-icon nc-zoom-split"></i></button>`;
+        },
+      }
+        // {
+        //   title : 'delete',
+        //   data : 'id',
+        //   orderable: false,
+        //   render(data, type, row){
+        //     return `<button type="button" class="btn btn-dark btn-default delete" data-element-id="${row.id}">
+        //     Delete</button>`;
+        //   },
+        // }
+      ],
+      rowCallback: (row: Node, data: any, index: number) => {
+        $('#btnEdit', row).click(() => {
+          // this.router.navigate(['/admin-page/arsip/edit/'+data.id]);
+          this.open(data.idApproval);
+        });
+      }
+    };
 
     //   document.querySelector('body').addEventListener('click', (event) => {
     //   let target = <Element>event.target;
@@ -363,16 +363,16 @@ export class IconsComponent implements OnInit, AfterViewInit{
     this.dtTrigger.next()
   }
 
-  refresh() : void {
+  refresh(): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       dtInstance.destroy();
       this.dtTrigger.next();
-   });
+    });
   }
 
-  open(idApproval : any) {
-    this.service.getDataTransaksiApproval(idApproval).subscribe(data=> {
-      const modalRef = this.modalService.open(NgbdModalContent, {size: 'xl'});
+  open(idApproval: any) {
+    this.service.getDataTransaksiApproval(idApproval).subscribe(data => {
+      const modalRef = this.modalService.open(NgbdModalContent, { size: 'xl' });
       modalRef.componentInstance.dataTransaksi = data.body;
     }, error => {
       this.toastr.error("Gagal Mendapatkan Data Simpanan")
