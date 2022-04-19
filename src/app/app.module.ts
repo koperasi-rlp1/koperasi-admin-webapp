@@ -27,6 +27,7 @@ import { SetoranComponent } from './pages/setoran/setoran.component';
 import { DataNasabahComponent } from './pages/data-nasabah/data-nasabah.component';
 import { DataKoperasiComponent } from './pages/data-koperasi/data-koperasi.component';
 import { NgxCurrencyModule } from 'ngx-currency';
+import { BayarPinjamanComponent } from './pages/bayar-pinjaman/bayar-pinjaman.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { NgxCurrencyModule } from 'ngx-currency';
     NotificationsComponent,
     SetoranComponent,
     DataNasabahComponent,
-    DataKoperasiComponent
+    DataKoperasiComponent,
+    BayarPinjamanComponent
 
   ],
   imports: [

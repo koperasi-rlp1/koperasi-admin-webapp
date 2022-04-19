@@ -82,7 +82,7 @@ const Swal = require('sweetalert2');
                 <label class="col-sm-4 col-form-label">Bukti Pembayaran</label>
                 <div class="col-sm-8">
                   <div class="input-group input-group-sm">
-                    <img src="" alt="" width="100%">
+                    <img [src]="image" width="100%">
                   </div>
                 </div>
               </div>
@@ -100,6 +100,7 @@ const Swal = require('sweetalert2');
 })
 export class NgbdModalContent {
   @Input() dataTransaksi;
+  @Input() image;
 
   approve(dataTransaksi: any, statusApproval: any) {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -374,6 +375,7 @@ export class IconsComponent implements OnInit, AfterViewInit {
     this.service.getDataTransaksiApproval(idApproval).subscribe(data => {
       const modalRef = this.modalService.open(NgbdModalContent, { size: 'xl' });
       modalRef.componentInstance.dataTransaksi = data.body;
+      modalRef.componentInstance.image = "/koperasi-service/api/transaksi-approval/file/"+data.body.buktiPembayaran;
     }, error => {
       this.toastr.error("Gagal Mendapatkan Data Simpanan")
     })

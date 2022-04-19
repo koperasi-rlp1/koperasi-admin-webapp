@@ -13,6 +13,7 @@ export const ROUTES: RouteInfo[] = [
   { path: "/maps", title: "Konfirmasi Keanggotaan", icon: "", class: "" },
   { path: "/konfirmasi-pinjaman", title: "Konfirmasi Pinjaman", icon: "", class: "" },
   { path: "/pinjaman-pembayaran", title: "Pinjaman Pembayaran", icon: "", class: "" },
+  { path: "/setoran-pinjaman", title: "Setoran Pinjaman", icon: "", class: "" },
   { path: "/data-nasabah", title: "Data Nasabah", icon: "", class: "" },
   { path: "/data-koperasi", title: "Data Koperasi", icon: "", class: "" },
 ];

@@ -101,7 +101,7 @@ export class PembayaranContent {
                 this.service.update(data).subscribe(
                   event => {
                     this.toastr.success("Data Telah Konfirmasi");
-                    // window.location.reload();
+                    window.location.reload();
                   },
                   err => {
                     this.progress = 0;

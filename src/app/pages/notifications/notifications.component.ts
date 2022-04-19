@@ -137,6 +137,7 @@ export class ApprovalContent {
         transaksi.statusTransaksi = "approve";
         this.service.transactional(transaksi).subscribe(data => {
           this.toastr.success("Pinjaman Berhasil Di Approve")
+          window.location.reload();
         }, error => {
           this.toastr.error("Service Gagal")
         });

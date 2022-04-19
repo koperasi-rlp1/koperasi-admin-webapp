@@ -39,6 +39,18 @@ export class PinjamanService {
     .pipe(map(data => data as DatatablesResponse));
   }
 
+  public datatablesBayar(params : any) : Observable<DatatablesResponse>{
+    const param = new DatatablesRequest();
+    param.draw = params.draw;
+    param.length = params.length;
+    param.start = params.start;
+    param.sortCol = params.order[0].column;
+    param.sortDir = params.order[0].dir;
+    param.extraParam =  params.extraParam;
+    return this.http.post(environment.urlAdmin +'/pinjaman/datatablesBayar', param)
+    .pipe(map(data => data as DatatablesResponse));
+  }
+
   public getDataTransaksiApproval(idApproval : any){
     return this.http.get<any>(`${environment.urlAdmin}/pinjaman/data-by/${idApproval}`, {observe : 'response'});
   }

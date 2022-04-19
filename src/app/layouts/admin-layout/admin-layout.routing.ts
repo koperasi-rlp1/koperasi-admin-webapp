@@ -1,3 +1,4 @@
+import { BayarPinjamanComponent } from './../../pages/bayar-pinjaman/bayar-pinjaman.component';
 import { DataKoperasiComponent } from './../../pages/data-koperasi/data-koperasi.component';
 import { DataNasabahComponent } from './../../pages/data-nasabah/data-nasabah.component';
 import { SetoranComponent } from './../../pages/setoran/setoran.component';
@@ -23,5 +24,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'pinjaman-pembayaran',        component: SetoranComponent },
     { path: 'data-nasabah',        component: DataNasabahComponent },
-    { path: 'data-koperasi',        component: DataKoperasiComponent }
+    { path: 'data-koperasi',        component: DataKoperasiComponent },
+    { path: 'setoran-pinjaman',        component: BayarPinjamanComponent }
 ];
